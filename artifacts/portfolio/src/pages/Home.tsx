@@ -185,9 +185,6 @@ export default function Home() {
                   src={`${BASE_URL}/farhan-profile.png`} 
                   alt="Farhan Alam" 
                   className="w-full h-full object-cover rounded-full bg-card"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80'; // fallback just in case
-                  }}
                 />
               </div>
             </div>
@@ -225,9 +222,6 @@ export default function Home() {
                   src={`${BASE_URL}/farhan-profile.png`} 
                   alt="Farhan" 
                   className="w-full h-full object-cover rounded-xl"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80';
-                  }}
                 />
               </div>
             </motion.div>

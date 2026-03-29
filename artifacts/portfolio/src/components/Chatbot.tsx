@@ -141,9 +141,6 @@ export function Chatbot() {
                     src={`${BASE_URL}/chatbot-avatar.jpg`} 
                     alt="Bot Avatar" 
                     className="w-10 h-10 rounded-full object-cover border-2 border-primary/50"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://ui-avatars.com/api/?name=FA&background=06B6D4&color=fff';
-                    }}
                   />
                   <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-card rounded-full"></span>
                 </div>
