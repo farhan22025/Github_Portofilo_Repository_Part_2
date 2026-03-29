@@ -14,33 +14,52 @@ const INITIAL_MESSAGE: Message = {
   text: "Hi there! 👋 I'm Farhan's virtual assistant. I can answer questions about his skills, projects, education, and experience. How can I help you?",
 };
 
-// Simple rule-based response engine
+// Rule-based response engine — first-person voice, tightly scoped keyword groups
 function getBotResponse(input: string): string {
-  const lowerInput = input.toLowerCase();
-  
-  if (lowerInput.match(/who|farhan|yourself|name|about/)) {
-    return "Farhan Alam is an aspiring Data Engineer and Software Engineering student at Daffodil International University. He's passionate about turning data into insights and currently researching deepfake image detection.";
+  const q = input.toLowerCase().trim();
+
+  // Identity / intro — only match clear identity-seeking phrases
+  if (/\b(who are you|who is farhan|introduce yourself|tell me about yourself|your name|what do you do)\b/.test(q)) {
+    return "I'm Farhan Alam — an aspiring Data Engineer and Software Engineering student at Daffodil International University in Dhaka. I'm passionate about turning data into insights and I'm currently conducting research on deepfake image detection as my undergraduate thesis.";
   }
-  if (lowerInput.match(/skill|programming|database|language|tools|technology/)) {
-    return "Farhan's core skills include Python, Java, C, PHP, and R. For databases, he uses MySQL, Advanced Excel, and Google Sheets. He's also proficient with Linux, macOS, and design tools like Photoshop and Canva.";
+
+  // Skills / programming languages / tools
+  if (/\b(skill|program|language|python|java|php|tool|database|mysql|excel|canva|photoshop|linux|sqa|testing)\b/.test(q)) {
+    return "My core programming skills include Python, Java, C, R, and PHP. For data and databases I work with MySQL, Advanced Excel, and Google Sheets. I also use Linux, macOS, Adobe Photoshop, Illustrator, Canva, and SQA Testing in my workflow.";
   }
-  if (lowerInput.match(/project|portfolio|work|deepfake|waste|coffee|bank/)) {
-    return "Farhan has worked on several key projects: \n1. A Deepfake Image Detection system using ML (Ongoing thesis).\n2. A Smart Waste Management System (Capstone).\n3. A Java OOP-based Coffee Shop Management System.\n4. A C-based Banking Management System.";
+
+  // Projects — specific project keywords or generic "projects / work"
+  if (/\b(project|deepfake|waste|coffee|banking|capstone|thesis|java|c programming)\b/.test(q)) {
+    return "I've worked on four main academic projects:\n1. Deepfake Image Detection — my ongoing ML-based thesis research.\n2. Smart Waste Management System — a capstone project using SRS, UML, and ERD.\n3. Coffee Shop Management System — a Java OOP point-of-sale system.\n4. Banking Management System — a C-based file-handling financial records system.\nYou can find them all on my GitHub at github.com/farhan22025.";
   }
-  if (lowerInput.match(/education|study|university|school|degree|cgpa|diu|loretto/)) {
-    return "He is currently pursuing a B.Sc. in Software Engineering at Daffodil International University (CGPA 3.06). Previously, he completed his Cambridge A Levels at St. Loretto School & College with a GPA of 4.00/5.00.";
+
+  // Education
+  if (/\b(education|study|university|diu|daffodil|school|loretto|degree|cgpa|gpa|a level|o level)\b/.test(q)) {
+    return "I'm currently pursuing a B.Sc. in Software Engineering at Daffodil International University (2022–2026) with a CGPA of 3.06/4.00. Before that, I completed my Cambridge A Levels at St. Loretto School & College in 2021 with a GPA of 4.00/5.00 (Physics and Mathematics).";
   }
-  if (lowerInput.match(/activity|experience|club|volunteer|robotics|data science/)) {
-    return "He is an active member of the DIU Data Science Club Research Lab (2022-present) and the DIU Robotics Club (2024-present). He also volunteers at various tech events and hackathons.";
+
+  // Activities / experience / clubs
+  if (/\b(activit|experience|club|volunteer|robotics|data science|hackathon|iot)\b/.test(q)) {
+    return "I'm an active member of the DIU Data Science Club Research Lab (since 2022), where I work on data analysis and deepfake detection research. I'm also part of the DIU Robotics Club (since 2024), focusing on IoT and automation projects. On top of that, I regularly volunteer at tech events and hackathons to support the student community.";
   }
-  if (lowerInput.match(/contact|email|phone|reach|hire/)) {
-    return "You can reach Farhan at alam22205341122@diu.edu.bd or f05076963@gmail.com. His phone number is +8801610772313. You can also connect with him via his LinkedIn or GitHub profile!";
+
+  // Research interests
+  if (/\b(research|interest|machine learning|ml|computer vision|ai|image forensic|ai security)\b/.test(q)) {
+    return "My research interests are in Machine Learning, Computer Vision, Deepfake Detection, AI Security, and Image Forensics. Right now I'm building a lightweight offline ML model for detecting manipulated images as my undergraduate thesis.";
   }
-  if (lowerInput.match(/research|interest|ml|machine learning|computer vision/)) {
-    return "His research interests lie primarily in Machine Learning, Computer Vision, Deepfake Detection, AI Security, and Image Forensics. He is currently focused on building a lightweight deepfake image detection system.";
+
+  // Contact / hire
+  if (/\b(contact|email|phone|reach|hire|number|location|address)\b/.test(q)) {
+    return "You're welcome to reach me at f05076963@gmail.com or alam22205341122@diu.edu.bd. My phone number is +8801610772313. I'm based in Tejgaon, Dhaka-1215, Bangladesh. You can also connect with me on GitHub at github.com/farhan22025.";
   }
-  
-  return "I'm here to help with questions about Farhan's professional background. Could you ask me something about his skills, projects, education, or experience?";
+
+  // Greetings — respond warmly but stay on topic
+  if (/^(hi|hello|hey|good morning|good afternoon|good evening|howdy|sup)\b/.test(q)) {
+    return "Hi there! 👋 I'm Farhan's virtual assistant. I can answer questions about my skills, projects, education, and experience. What would you like to know?";
+  }
+
+  // Fallback — polite off-topic redirection
+  return "I'm here specifically to help with questions about Farhan's professional background. Could you ask me something about his skills, projects, education, or experience?";
 }
 
 export function Chatbot() {
