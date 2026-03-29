@@ -68,7 +68,7 @@ export function Navbar() {
             onClick={() => scrollTo('#home')}
             className="font-display font-bold text-xl tracking-tight group"
           >
-            <span className="text-gradient-violet">farhan</span>
+            <span className="text-gradient-primary">farhan</span>
             <span className="text-foreground/40 group-hover:text-foreground/60 transition-colors">.dev</span>
           </button>
 

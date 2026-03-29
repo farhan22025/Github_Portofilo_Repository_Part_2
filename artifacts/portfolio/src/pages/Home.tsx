@@ -48,13 +48,13 @@ const skillsData = [
   {
     category: "Programming Languages",
     icon: <Code className="w-5 h-5" />,
-    color: "from-violet-500 to-purple-600",
+    color: "from-blue-600 to-indigo-600",
     skills: ["Python", "Java", "C", "R", "PHP"],
   },
   {
     category: "Databases & Data Tools",
     icon: <Database className="w-5 h-5" />,
-    color: "from-pink-500 to-rose-600",
+    color: "from-orange-500 to-amber-600",
     skills: ["Advanced Excel", "MySQL", "Google Sheets"],
   },
   {
@@ -78,7 +78,7 @@ const projects = [
     type: "Research / Thesis",
     desc: "Developing a lightweight offline machine learning model for detecting manipulated images in low-resource environments. Applies image processing and classification techniques for efficient detection.",
     tags: ["ML", "Python", "Image Processing", "AI Security"],
-    accent: "from-violet-500 to-purple-500",
+    accent: "from-blue-600 to-indigo-600",
   },
   {
     title: "Smart Waste Management System",
@@ -86,7 +86,7 @@ const projects = [
     type: "Capstone",
     desc: "Designed relational database schema and data flow diagrams. Prepared software requirements documents to support scalable system architecture.",
     tags: ["System Design", "SRS", "UML", "ERD", "Database"],
-    accent: "from-pink-500 to-rose-500",
+    accent: "from-orange-500 to-amber-500",
   },
   {
     title: "Coffee Shop Management System",
@@ -102,7 +102,7 @@ const projects = [
     type: "Academic",
     desc: "Built a file-based data persistence system for storing and retrieving client financial records with input validation.",
     tags: ["C Programming", "File Handling", "Data Persistence"],
-    accent: "from-amber-500 to-orange-500",
+    accent: "from-teal-500 to-emerald-500",
   }
 ];
 
@@ -169,7 +169,7 @@ export default function Home() {
               >
                 <span className="text-foreground">Farhan</span>
                 <br />
-                <span className="text-gradient-violet">Alam</span>
+                <span className="text-gradient-primary">Alam</span>
               </motion.h1>
 
               <motion.div variants={fadeUp} custom={0.2} className="h-8 sm:h-10 mt-4 mb-6">
@@ -268,15 +268,15 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-3 gap-3 mt-4">
                 <div className="neo-card p-3 text-center rounded-xl">
-                  <p className="text-2xl font-display font-bold text-gradient-violet">3.06</p>
+                  <p className="text-2xl font-display font-bold text-gradient-primary">3.06</p>
                   <p className="text-xs text-muted-foreground mt-1">CGPA</p>
                 </div>
                 <div className="neo-card p-3 text-center rounded-xl">
-                  <p className="text-2xl font-display font-bold text-gradient-violet">4+</p>
+                  <p className="text-2xl font-display font-bold text-gradient-primary">4+</p>
                   <p className="text-xs text-muted-foreground mt-1">Projects</p>
                 </div>
                 <div className="neo-card p-3 text-center rounded-xl">
-                  <p className="text-2xl font-display font-bold text-gradient-violet">2+</p>
+                  <p className="text-2xl font-display font-bold text-gradient-primary">2+</p>
                   <p className="text-xs text-muted-foreground mt-1">Clubs</p>
                 </div>
               </div>
@@ -289,7 +289,7 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
               <h3 className="text-3xl font-display font-bold mb-6 tracking-tight">
-                Aspiring <span className="text-gradient-violet">Data Engineer</span> based in Dhaka
+                Aspiring <span className="text-gradient-primary">Data Engineer</span> based in Dhaka
               </h3>
               <p className="text-muted-foreground text-lg leading-relaxed mb-5">
                 I am a Software Engineering student at Daffodil International University with a strong academic interest in Data Science, Machine Learning, and data-driven problem solving. Experienced in academic projects involving database design, system analysis, Java and C development, and currently building a lightweight deepfake image detection system for research-oriented work.
@@ -378,7 +378,7 @@ export default function Home() {
                       <span className="text-xs font-semibold text-primary uppercase tracking-wider">{project.type}</span>
                       <span className="text-xs text-muted-foreground">{project.year}</span>
                     </div>
-                    <h3 className="text-2xl font-display font-bold text-foreground group-hover:text-gradient-violet transition-colors mb-3">
+                    <h3 className="text-2xl font-display font-bold text-foreground group-hover:text-gradient-primary transition-colors mb-3">
                       {project.title}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed mb-4 max-w-2xl">
@@ -696,7 +696,7 @@ export default function Home() {
       <footer className="border-t border-border/50 py-10 relative z-10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-display font-semibold text-sm">
-            <span className="text-gradient-violet">farhan</span>
+            <span className="text-gradient-primary">farhan</span>
             <span className="text-foreground/40">.dev</span>
           </p>
           <div className="flex gap-4">

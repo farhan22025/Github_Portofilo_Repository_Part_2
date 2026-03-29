@@ -1,0 +1,54 @@
+1. The "Corporate Classic": Blue & Neutral Grey
+This is the safest and most professional combination. It conveys trust and stability. 
+Julius AI
+Julius AI
+ +1
+Best for: Financial reports, business dashboards, and corporate consulting projects.
+Palette: Dark blue (data points) + Lighter blue (supporting data) + Light grey/White (backgrounds/gridlines).
+Tip: Reserve bright blue to highlight the single most important insight on the screen. 
+insightsoftware
+insightsoftware
+ +1
+2. The "Analytical Standard": Orange & Blue
+Complementary colors (opposites on the color wheel) provide the strongest contrast. This combination is highly favored in data visualization for its clarity and accessibility. 
+Datawrapper
+Datawrapper
+ +1
+Best for: Diverging charts (e.g., profit vs. loss, above vs. below target).
+Palette: Deep blue (positive/normal) + Warm orange/red (negative/attention) + Light grey (neutral background). 
+Julius AI
+Julius AI
+3. The "Scientific/Clean": Muted Greens & Dark Blue
+This combination is "safer" than red/green and provides a clean, modern, and trustworthy feel. 
+Datawrapper
+Datawrapper
+ +1
+Best for: Healthcare data, sustainability reports, or general EDA (Exploratory Data Analysis).
+Palette: Dark Blue-Green + Medium Sage Green + Muted Yellow-Green. 
+Datawrapper
+Datawrapper
+4. The "Data Scientist Favorite": Sequential Purple/Blue
+Used for numeric data that ranges from low to high (e.g., heatmaps, density plots, or population mapping). 
+Onspring
+Onspring
+ +2
+Best for: Machine learning results, geospatial analysis, or heatmaps.
+Palette: Light Lavender 
+ Medium Purple 
+ Dark Blue-Purple. 
+Key Principles for Portfolio Color Choice
+Grey is the most important color: Use grey (or light grey) for less important elements, gridlines, or context data to make your highlight colors stand out.
+Accessibility First: 8% of men have red-green color blindness. Use Viz Palette or Coblis to test your portfolio colors. Avoid red and green together—use Blue and Orange instead.
+Limit to 5–7 Colors: Too many colors overwhelm the eye.
+Consistency: If blue represents "Revenue" in the first chart, it must be blue in all subsequent charts.
+Build in Grayscale: If your chart does not clearly show the insight in black and white, color will not fix it. Add color sparingly for emphasis. 
+Simplified Science Publishing
+Simplified Science Publishing
+ +4
+Best Tools for Creating Palettes
+ColorBrewer: Excellent for finding colorblind-safe sequential and diverging palettes.
+Viz Palette: Allows you to test your palettes on real chart examples and simulates colorblindness.
+Coolors.co: For generating appealing, professional color combinations. 
+Simplified Science Publishing
+Simplified Science Publishing
+ +1
