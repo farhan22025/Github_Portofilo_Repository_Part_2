@@ -219,11 +219,11 @@ export default function Home() {
             >
               <div className="relative">
                 <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/20 to-primary/10 blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden border-2 border-primary/20 rotate-3 hover:rotate-0 transition-transform duration-700 bg-gradient-to-br from-primary/10 via-secondary/5 to-background">
+                <div className="relative w-64 h-72 sm:w-72 sm:h-80 lg:w-80 lg:h-[22rem] rounded-3xl overflow-hidden border-2 border-primary/20 rotate-3 hover:rotate-0 transition-transform duration-700 bg-gradient-to-br from-primary/10 via-secondary/5 to-background">
                   <img
                     src={`${BASE_URL}/farhan-profile.png`}
                     alt="Farhan Alam"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                 </div>
