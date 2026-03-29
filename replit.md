@@ -48,6 +48,19 @@ Every package extends `tsconfig.base.json` which sets `composite: true`. The roo
 - `pnpm run build` — runs `typecheck` first, then recursively runs `build` in all packages that define it
 - `pnpm run typecheck` — runs `tsc --build --emitDeclarationOnly` using project references
 
+## Artifacts
+
+### `artifacts/portfolio` (`@workspace/portfolio`)
+
+Farhan Alam's personal portfolio website. A fully static React + Vite single-page app served at `/`.
+
+- **Sections**: Hero (typing animation, profile photo), About Me, Research Interests, Skills (animated progress bars), Projects (4 cards with GitHub links), Activities & Experience, Education (3-entry timeline), Interactive Map (Leaflet.js, OpenStreetMap), Contact (form + info), Footer
+- **Chatbot**: Rule-based floating widget using the avatar from `public/chatbot-avatar.jpg`, scoped to Farhan's professional background
+- **Dark mode**: CSS variables-based teal/cyan/navy theme, toggled with localStorage persistence
+- **Packages**: framer-motion, react-leaflet, leaflet, @types/leaflet, react-hook-form, @hookform/resolvers
+- **Assets**: `public/farhan-profile.png` (profile photo), `public/chatbot-avatar.jpg` (chatbot avatar)
+- `pnpm --filter @workspace/portfolio run dev` — starts Vite dev server on assigned port
+
 ## Packages
 
 ### `artifacts/api-server` (`@workspace/api-server`)

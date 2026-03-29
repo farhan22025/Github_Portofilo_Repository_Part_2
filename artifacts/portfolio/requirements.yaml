@@ -1,0 +1,12 @@
+packages:
+  "framer-motion": "For page transitions, scroll-triggered animations, and typing effects"
+  "leaflet": "For the interactive map"
+  "react-leaflet": "React components for Leaflet maps"
+  "@types/leaflet": "TypeScript definitions for Leaflet"
+  "react-hook-form": "For contact form management"
+  "@hookform/resolvers": "For Zod integration with react-hook-form"
+
+notes:
+  - This is a static frontend-only portfolio. No backend API is needed.
+  - The map component requires leaflet css to be imported.
+  - The images farhan-profile.png and chatbot-avatar.jpg are assumed to be in the public directory and will be loaded from the root path.
