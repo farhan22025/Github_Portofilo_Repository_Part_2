@@ -484,9 +484,9 @@ export default function Home() {
                   {
                     degree: "Cambridge O Levels",
                     school: "St. Loretto School & College",
-                    time: "Completed",
-                    score: "Science Group",
-                    desc: "Foundational coursework in Mathematics, Science, English, Bengali.",
+                    time: "Completed 2019",
+                    score: "GPA: 4.00 / 5.00",
+                    desc: "Science Group. Coursework in Mathematics, Physics, Chemistry, Biology, English, Bengali, ICT.",
                   }
                 ].map((item, idx) => (
                   <motion.div
