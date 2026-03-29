@@ -54,9 +54,10 @@ Every package extends `tsconfig.base.json` which sets `composite: true`. The roo
 
 Farhan Alam's personal portfolio website. A fully static React + Vite single-page app served at `/`.
 
-- **Sections**: Hero (typing animation, profile photo), About Me, Research Interests, Skills (animated progress bars), Projects (4 cards with GitHub links), Activities & Experience, Education (3-entry timeline), Interactive Map (Leaflet.js, OpenStreetMap), Contact (form + info), Footer
-- **Chatbot**: Rule-based floating widget using the avatar from `public/chatbot-avatar.jpg`, scoped to Farhan's professional background
-- **Dark mode**: CSS variables-based teal/cyan/navy theme, toggled with localStorage persistence
+- **Sections**: Hero (typing animation, rounded-square profile photo, gradient orbs), About Me (stats cards, research interest chips), Skills (bento grid with skill chips), Projects (numbered cards 01–04 with GitHub links), Activities & Experience, Education (3 entries), Interactive Map (Leaflet.js, OpenStreetMap), Contact (form + info), Footer
+- **Chatbot**: Rule-based floating widget using the avatar from `public/chatbot-avatar.jpg`, gradient-styled chat bubble
+- **Dark mode**: CSS variables-based violet/purple theme, toggled with localStorage persistence
+- **Design**: Violet/purple + rose/pink accent, Space Grotesk + DM Sans fonts, pill-shaped nav, floating gradient orbs background, dot-grid sections, neo-card styling with glow borders
 - **Packages**: framer-motion, react-leaflet, leaflet, @types/leaflet, react-hook-form, @hookform/resolvers
 - **Assets**: `public/farhan-profile.png` (profile photo), `public/chatbot-avatar.jpg` (chatbot avatar)
 - `pnpm --filter @workspace/portfolio run dev` — starts Vite dev server on assigned port

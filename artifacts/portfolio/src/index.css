@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -50,73 +50,71 @@
 }
 
 :root {
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-display: 'Poppins', sans-serif;
-  --radius: 0.75rem;
+  --app-font-sans: 'DM Sans', system-ui, sans-serif;
+  --app-font-display: 'Space Grotesk', system-ui, sans-serif;
+  --radius: 1rem;
 
-  /* LIGHT MODE (Fallback, though default is dark for this project) */
-  --background: 210 40% 98%;
-  --foreground: 222 47% 11%;
-  
+  --background: 0 0% 98%;
+  --foreground: 240 10% 10%;
+
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-  --card-border: 214 32% 91%;
-  
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-  --popover-border: 214 32% 91%;
-  
-  --primary: 189 94% 43%; /* Cyan 500 */
-  --primary-foreground: 0 0% 100%;
-  
-  --secondary: 175 77% 26%; /* Teal 700 */
-  --secondary-foreground: 0 0% 100%;
-  
-  --muted: 210 40% 96%;
-  --muted-foreground: 215 16% 47%;
-  
-  --accent: 189 94% 43%;
-  --accent-foreground: 0 0% 100%;
-  
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
+  --card-foreground: 240 10% 10%;
+  --card-border: 270 10% 90%;
 
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 189 94% 43%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 10%;
+  --popover-border: 270 10% 90%;
+
+  --primary: 263 70% 50%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 330 81% 60%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 260 10% 95%;
+  --muted-foreground: 240 5% 46%;
+
+  --accent: 263 70% 50%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 270 10% 90%;
+  --input: 270 10% 90%;
+  --ring: 263 70% 50%;
 }
 
 .dark {
-  /* DARK MODE: Navy/Teal/Cyan Theme */
-  --background: 222 47% 11%; /* Very dark navy / slate 900 */
-  --foreground: 210 40% 98%; /* Slate 50 */
-  
-  --card: 222 47% 15%; /* Slightly lighter navy with glassmorphism */
-  --card-foreground: 210 40% 98%;
-  --card-border: 215 28% 25%; /* Slate 700 */
-  
-  --popover: 222 47% 15%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 215 28% 25%;
-  
-  --primary: 189 94% 43%; /* Cyan 500 */
-  --primary-foreground: 222 47% 11%;
-  
-  --secondary: 175 77% 26%; /* Teal 700 */
-  --secondary-foreground: 210 40% 98%;
-  
-  --muted: 215 28% 25%; /* Slate 700 */
-  --muted-foreground: 215 20% 65%; /* Slate 400 */
-  
-  --accent: 189 94% 43%; /* Cyan 500 */
-  --accent-foreground: 222 47% 11%;
-  
-  --destructive: 0 62% 30%;
-  --destructive-foreground: 210 40% 98%;
+  --background: 260 30% 6%;
+  --foreground: 0 0% 96%;
 
-  --border: 215 28% 25%;
-  --input: 215 28% 25%;
-  --ring: 189 94% 43%;
+  --card: 260 25% 10%;
+  --card-foreground: 0 0% 96%;
+  --card-border: 260 20% 18%;
+
+  --popover: 260 25% 10%;
+  --popover-foreground: 0 0% 96%;
+  --popover-border: 260 20% 18%;
+
+  --primary: 263 70% 65%;
+  --primary-foreground: 260 30% 6%;
+
+  --secondary: 330 81% 65%;
+  --secondary-foreground: 260 30% 6%;
+
+  --muted: 260 20% 15%;
+  --muted-foreground: 260 10% 55%;
+
+  --accent: 263 70% 65%;
+  --accent-foreground: 260 30% 6%;
+
+  --destructive: 0 62% 40%;
+  --destructive-foreground: 0 0% 96%;
+
+  --border: 260 20% 18%;
+  --input: 260 20% 18%;
+  --ring: 263 70% 65%;
 }
 
 @layer base {
@@ -134,49 +132,133 @@
   }
 }
 
-/* Custom Utilities for Glassmorphism & Animations */
 @layer utilities {
-  .glass-card {
-    @apply bg-card/40 backdrop-blur-md border border-white/10 dark:border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  .neo-card {
+    @apply bg-card border border-card-border rounded-2xl transition-all duration-500;
+    box-shadow: 0 0 0 1px hsl(var(--card-border) / 0.5);
   }
-  
-  .glass-nav {
-    @apply bg-background/80 backdrop-blur-lg border-b border-border/50;
+
+  .neo-card:hover {
+    box-shadow:
+      0 0 0 1px hsl(var(--primary) / 0.3),
+      0 20px 60px -15px hsl(var(--primary) / 0.15);
   }
-  
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-cyan-300 to-teal-400;
+
+  .text-gradient-violet {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
   }
-  
-  .bg-gradient-mesh {
+
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--muted-foreground)));
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.4), 0 0 80px -20px hsl(var(--secondary) / 0.2);
+  }
+
+  .glow-border {
+    position: relative;
+  }
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.5), hsl(var(--secondary) / 0.5), hsl(var(--primary) / 0.2));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .mesh-bg {
     background-color: hsl(var(--background));
-    background-image: 
-      radial-gradient(at 0% 0%, hsla(189, 94%, 43%, 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, hsla(175, 77%, 26%, 0.15) 0px, transparent 50%);
-    background-attachment: fixed;
   }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
   }
-  
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+  .dark .orb { opacity: 0.12; }
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: hsl(var(--primary));
+    top: -10%;
+    right: -10%;
+    animation: orb-drift-1 20s ease-in-out infinite alternate;
   }
-  
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  .orb-2 {
+    width: 500px;
+    height: 500px;
+    background: hsl(var(--secondary));
+    bottom: 10%;
+    left: -5%;
+    animation: orb-drift-2 25s ease-in-out infinite alternate;
+  }
+  .orb-3 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(hsl(var(--primary)), hsl(var(--secondary)));
+    top: 50%;
+    left: 40%;
+    animation: orb-drift-3 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes orb-drift-1 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-80px, 60px) scale(1.1); }
+  }
+  @keyframes orb-drift-2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, -80px) scale(0.9); }
+  }
+  @keyframes orb-drift-3 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-40px, 40px) scale(1.15); }
+  }
+
+  .number-badge {
+    @apply font-display font-bold text-8xl leading-none;
+    -webkit-text-stroke: 2px hsl(var(--primary) / 0.2);
+    color: transparent;
+  }
+  .dark .number-badge {
+    -webkit-text-stroke: 2px hsl(var(--primary) / 0.15);
+  }
+
+  .skill-chip {
+    @apply px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-300 cursor-default;
+    @apply bg-primary/5 border-primary/15 text-foreground/80;
+  }
+  .skill-chip:hover {
+    @apply bg-primary/15 border-primary/30 text-foreground scale-105;
+  }
+
+  .section-divider {
+    @apply w-full h-px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
   }
 }
 
-/* Leaflet map overrides */
 .leaflet-container {
-  @apply rounded-xl z-0 border border-border;
+  @apply rounded-2xl z-0 border border-border;
 }
 .leaflet-popup-content-wrapper {
-  @apply !bg-card !text-card-foreground !rounded-lg !shadow-lg;
+  @apply !bg-card !text-card-foreground !rounded-xl !shadow-lg;
 }
 .leaflet-popup-tip {
   @apply !bg-card;

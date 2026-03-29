@@ -23,11 +23,10 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      
-      // Update active section
+
       const sections = navLinks.map(link => link.href.substring(1));
       let current = "home";
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -56,88 +55,90 @@ export function Navbar() {
   };
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isScrolled ? "glass-nav py-3" : "bg-transparent py-5"
+    <header
+      className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+        isScrolled
+          ? "bg-background/70 backdrop-blur-xl border-b border-border/50 py-3"
+          : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
-          <div 
-            className="text-2xl font-display font-bold text-gradient cursor-pointer"
+          <button
             onClick={() => scrollTo('#home')}
+            className="font-display font-bold text-xl tracking-tight group"
           >
-            FA.
-          </div>
+            <span className="text-gradient-violet">farhan</span>
+            <span className="text-foreground/40 group-hover:text-foreground/60 transition-colors">.dev</span>
+          </button>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollTo(link.href)}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors relative ${
-                  activeSection === link.href.substring(1)
-                    ? "text-primary"
-                    : "text-foreground/80 hover:text-primary hover:bg-muted/50"
-                }`}
-              >
-                {link.name}
-                {activeSection === link.href.substring(1) && (
-                  <motion.div 
-                    layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full mx-3"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </button>
-            ))}
-            
-            <button 
+          <nav className="hidden lg:flex items-center gap-1">
+            <div className="flex items-center bg-muted/50 rounded-full p-1 border border-border/50">
+              {navLinks.map((link) => (
+                <button
+                  key={link.name}
+                  onClick={() => scrollTo(link.href)}
+                  className={`relative px-3.5 py-1.5 text-sm font-medium rounded-full transition-all duration-300 ${
+                    activeSection === link.href.substring(1)
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {activeSection === link.href.substring(1) && (
+                    <motion.div
+                      layoutId="pill"
+                      className="absolute inset-0 bg-primary rounded-full"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.name}</span>
+                </button>
+              ))}
+            </div>
+
+            <button
               onClick={toggleTheme}
-              className="ml-4 p-2 rounded-full hover:bg-muted text-foreground/80 transition-colors"
+              className="ml-3 w-9 h-9 flex items-center justify-center rounded-full bg-muted/50 border border-border/50 text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
           </nav>
 
-          {/* Mobile Nav Toggle */}
-          <div className="flex items-center md:hidden gap-2">
-            <button 
+          <div className="flex items-center lg:hidden gap-2">
+            <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-muted text-foreground/80 transition-colors"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-muted/50 border border-border/50 text-muted-foreground hover:text-foreground transition-all"
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="p-2 text-foreground/80 hover:text-primary"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-muted/50 border border-border/50 text-muted-foreground hover:text-foreground"
             >
-              {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-nav border-t border-border mt-2"
+            className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border/50 mt-2"
           >
-            <div className="px-4 py-4 flex flex-col space-y-2">
+            <div className="px-4 py-3 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollTo(link.href)}
-                  className={`px-4 py-3 text-left font-medium rounded-lg ${
+                  className={`px-4 py-2.5 text-left text-sm font-medium rounded-xl transition-all ${
                     activeSection === link.href.substring(1)
                       ? "bg-primary/10 text-primary"
-                      : "text-foreground hover:bg-muted"
+                      : "text-foreground/70 hover:bg-muted hover:text-foreground"
                   }`}
                 >
                   {link.name}
