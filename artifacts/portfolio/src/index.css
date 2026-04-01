@@ -54,67 +54,67 @@
   --app-font-display: 'Space Grotesk', system-ui, sans-serif;
   --radius: 1rem;
 
-  --background: 220 20% 97%;
-  --foreground: 224 30% 14%;
+  --background: 210 20% 97%;
+  --foreground: 220 35% 12%;
 
   --card: 0 0% 100%;
-  --card-foreground: 224 30% 14%;
-  --card-border: 220 15% 90%;
+  --card-foreground: 220 35% 12%;
+  --card-border: 215 15% 90%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 224 30% 14%;
-  --popover-border: 220 15% 90%;
+  --popover-foreground: 220 35% 12%;
+  --popover-border: 215 15% 90%;
 
-  --primary: 230 65% 48%;
+  --primary: 220 60% 22%;
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 28 90% 55%;
+  --secondary: 180 35% 42%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 220 15% 94%;
-  --muted-foreground: 220 10% 46%;
+  --muted: 210 15% 94%;
+  --muted-foreground: 215 12% 46%;
 
-  --accent: 230 65% 48%;
+  --accent: 265 45% 55%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 220 15% 90%;
-  --input: 220 15% 90%;
-  --ring: 230 65% 48%;
+  --border: 215 15% 89%;
+  --input: 215 15% 89%;
+  --ring: 220 60% 22%;
 }
 
 .dark {
-  --background: 228 30% 8%;
-  --foreground: 220 15% 95%;
+  --background: 222 35% 7%;
+  --foreground: 210 15% 93%;
 
-  --card: 228 25% 12%;
-  --card-foreground: 220 15% 95%;
-  --card-border: 228 20% 18%;
+  --card: 222 30% 11%;
+  --card-foreground: 210 15% 93%;
+  --card-border: 222 22% 17%;
 
-  --popover: 228 25% 12%;
-  --popover-foreground: 220 15% 95%;
-  --popover-border: 228 20% 18%;
+  --popover: 222 30% 11%;
+  --popover-foreground: 210 15% 93%;
+  --popover-border: 222 22% 17%;
 
-  --primary: 230 70% 62%;
-  --primary-foreground: 228 30% 8%;
+  --primary: 215 50% 55%;
+  --primary-foreground: 222 35% 7%;
 
-  --secondary: 28 85% 58%;
-  --secondary-foreground: 228 30% 8%;
+  --secondary: 178 40% 48%;
+  --secondary-foreground: 222 35% 7%;
 
-  --muted: 228 20% 16%;
-  --muted-foreground: 220 12% 55%;
+  --muted: 222 22% 15%;
+  --muted-foreground: 215 12% 55%;
 
-  --accent: 230 70% 62%;
-  --accent-foreground: 228 30% 8%;
+  --accent: 265 50% 65%;
+  --accent-foreground: 222 35% 7%;
 
   --destructive: 0 62% 40%;
-  --destructive-foreground: 220 15% 95%;
+  --destructive-foreground: 210 15% 93%;
 
-  --border: 228 20% 18%;
-  --input: 228 20% 18%;
-  --ring: 230 70% 62%;
+  --border: 222 22% 17%;
+  --input: 222 22% 17%;
+  --ring: 215 50% 55%;
 }
 
 @layer base {
@@ -146,7 +146,7 @@
 
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(230 80% 65%));
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
   }
 
   .text-gradient-subtle {
@@ -212,7 +212,7 @@
   .orb-3 {
     width: 400px;
     height: 400px;
-    background: linear-gradient(hsl(var(--primary)), hsl(230 80% 70%));
+    background: linear-gradient(hsl(var(--primary)), hsl(var(--accent)));
     top: 50%;
     left: 40%;
     animation: orb-drift-3 18s ease-in-out infinite alternate;

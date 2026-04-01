@@ -35,25 +35,25 @@ const skillsData = [
   {
     category: "Programming Languages",
     icon: <Code className="w-5 h-5" />,
-    color: "from-blue-600 to-indigo-600",
+    color: "from-slate-700 to-slate-900",
     skills: ["Python", "Java", "C", "R", "PHP"],
   },
   {
     category: "Databases & Data Tools",
     icon: <Database className="w-5 h-5" />,
-    color: "from-orange-500 to-amber-600",
+    color: "from-teal-600 to-cyan-700",
     skills: ["Advanced Excel", "MySQL", "Google Sheets"],
   },
   {
     category: "Software & Platforms",
     icon: <Briefcase className="w-5 h-5" />,
-    color: "from-blue-500 to-indigo-600",
+    color: "from-blue-800 to-indigo-900",
     skills: ["Microsoft Office", "Google Workspace", "Linux", "macOS"],
   },
   {
     category: "Design & QA",
     icon: <Sparkles className="w-5 h-5" />,
-    color: "from-amber-500 to-orange-600",
+    color: "from-purple-500 to-violet-600",
     skills: ["Canva", "SQA Testing", "Adobe Photoshop", "Adobe Illustrator"],
   }
 ];
@@ -65,7 +65,7 @@ const projects = [
     type: "Research / Thesis",
     desc: "Developing a lightweight offline machine learning model for detecting manipulated images in low-resource environments. Applies image processing and classification techniques for efficient detection.",
     tags: ["ML", "Python", "Image Processing", "AI Security"],
-    accent: "from-blue-600 to-indigo-600",
+    accent: "from-slate-700 to-blue-900",
     github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Final-Year-Project/Deepfake-Detection",
   },
   {
@@ -74,7 +74,7 @@ const projects = [
     type: "Capstone",
     desc: "Designed relational database schema and data flow diagrams. Prepared software requirements documents to support scalable system architecture.",
     tags: ["System Design", "SRS", "UML", "ERD", "Database"],
-    accent: "from-orange-500 to-amber-500",
+    accent: "from-teal-600 to-cyan-700",
     github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Course-Projects/Smart-Waste-Management-System",
   },
   {
@@ -83,7 +83,7 @@ const projects = [
     type: "Academic",
     desc: "Developed a point-of-sale workflow for capturing orders, daily sales, inventory movement, and revenue records using Java OOP principles.",
     tags: ["Java", "OOP", "POS System"],
-    accent: "from-blue-500 to-indigo-500",
+    accent: "from-purple-500 to-violet-600",
     github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Course-Projects/Coffee-Shop-Management-System",
   },
   {
@@ -92,7 +92,7 @@ const projects = [
     type: "Academic",
     desc: "Built a file-based data persistence system for storing and retrieving client financial records with input validation.",
     tags: ["C Programming", "File Handling", "Data Persistence"],
-    accent: "from-teal-500 to-emerald-500",
+    accent: "from-blue-800 to-indigo-900",
     github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Course-Projects/Banking-Management-System",
   }
 ];
