@@ -1,0 +1,378 @@
+Software Requirements Specification (SRS)
+Portfolio Website Chatbot for Employer Interaction
+1. Introduction
+1.1 Purpose
+
+This document defines the requirements for an interactive chatbot embedded in Farhan’s portfolio website. The chatbot is intended to assist real-time employers, recruiters, and visitors by answering questions about Farhan’s background, including his skills, projects, education, experience, academics, contact details, and portfolio content.
+
+1.2 Problem Statement
+
+The current chatbot appears to respond only to a narrow set of trigger words such as “Education” or “Contact.” It fails to handle natural human conversation, paraphrased questions, mixed sentences, and broader employer-style queries. This creates a poor user experience and may negatively affect employer perception of the portfolio.
+
+1.3 Objective
+
+The chatbot must support both:
+
+direct keyword-based queries, and
+full natural language questions or sentences.
+
+It should respond intelligently, conversationally, and professionally to employer questions without repeatedly rejecting valid requests.
+
+2. Analysis of Current Chat Issues
+
+Based on the provided chat, the following major issues were identified:
+
+2.1 Overdependence on Exact Trigger Words
+
+The chatbot only responds properly to very specific words like:
+
+“Education”
+“Contact”
+
+But it fails on similar valid phrases such as:
+
+“Farhan’s academics”
+“tell how good of a fresher in job sector is he”
+“describe all of them please”
+“This portfolio”
+Impact
+
+Real employers usually type full questions, not only menu keywords. This makes the chatbot feel rigid and unintelligent.
+
+2.2 Failure to Understand Synonyms and Related Intents
+
+The chatbot does not understand that the following may refer to the same domain:
+
+academics = education
+fresher quality = employability/profile summary
+describe all of them = overview request
+portfolio = website/project overview
+Impact
+
+The chatbot misses obvious intent and fails to provide helpful responses.
+
+2.3 Repetitive Fallback Response
+
+The bot repeatedly says:
+
+“I'm here specifically to help with questions about Farhan's professional background. Could you ask me something about his skills, projects, education, or experience?”
+
+This response is repeated even when the user already asked relevant questions.
+
+Impact
+
+This makes the chatbot feel broken, dismissive, and frustrating.
+
+2.4 No Intent Recovery
+
+When the question is unclear or broad, the chatbot does not attempt to:
+
+interpret the likely intent,
+give a summary,
+provide options,
+or ask a smarter clarifying question.
+
+Example:
+
+“describe all of them please”
+“Okay skills then”
+“Projects”
+
+These should have been answerable immediately.
+
+Impact
+
+The chatbot forces the user to guess the “correct input format.”
+
+2.5 Missing Conversational Context Handling
+
+The chatbot does not use conversation history properly.
+
+Example:
+
+User says “describe all of them please” after a previous question.
+User says “Okay skills then.”
+User says “Projects.”
+
+The bot should understand these as follow-up requests.
+
+Impact
+
+The conversation feels disconnected and robotic.
+
+2.6 No Employer-Focused Summary Capability
+
+When asked, “how good of a fresher in job sector is he,” the chatbot should provide a concise professional summary of Farhan as a fresher candidate.
+
+Instead, it rejects the question.
+
+Impact
+
+This is a major failure, because employers often ask evaluative or summary-style questions.
+
+2.7 Inconsistent Coverage of Supported Topics
+
+The bot answers for:
+
+education
+contact
+
+But fails for:
+
+skills
+projects
+academics
+portfolio overview
+Impact
+
+The chatbot appears incomplete and unreliable.
+
+3. Corrected Interpretation of the Chat
+
+Below is how the chatbot should have responded more professionally.
+
+User:
+
+“tell how good of a fresher in job sector is he”
+
+Better response:
+
+Farhan appears to be a promising fresher for entry-level software and technology roles. He is currently pursuing a B.Sc. in Software Engineering, has an academic foundation in mathematics and physics, and is building a portfolio that highlights his technical growth. As a fresher, his strengths would be learning ability, technical curiosity, and developing project experience. Employers looking for a junior candidate with potential may find him suitable, especially for software development, web development, or AI-assisted application roles.
+
+User:
+
+“describe all of them please”
+
+Better response:
+
+Certainly. Here is a quick overview of Farhan’s profile:
+
+Skills: Technical and software-related competencies demonstrated through his portfolio and academic work.
+Projects: Practical work that reflects his ability to apply knowledge in real scenarios.
+Education: Currently pursuing a B.Sc. in Software Engineering at Daffodil International University.
+Experience: Academic and project-based experience relevant to entry-level opportunities.
+
+You can also ask me to explain any one of these in more detail.
+
+User:
+
+“Okay skills then”
+
+Better response:
+
+Farhan’s skills include software engineering fundamentals, problem-solving ability, and practical project development. His portfolio is designed to demonstrate both his technical learning and his readiness for entry-level opportunities. If you want, I can also break his skills into programming, tools, and soft skills.
+
+User:
+
+“Projects”
+
+Better response:
+
+Farhan’s projects represent his hands-on learning and practical application of software engineering concepts. They help demonstrate his problem-solving approach, technical growth, and ability to build usable systems. I can summarize his featured projects individually if needed.
+
+User:
+
+“Farhans academics”
+
+Better response:
+
+Farhan’s academic background includes a B.Sc. in Software Engineering at Daffodil International University, along with Cambridge A Levels in Physics and Mathematics. His academic path reflects a foundation in analytical thinking and technical study.
+
+User:
+
+“This portfolio”
+
+Better response:
+
+This portfolio is a professional showcase of Farhan’s education, technical skills, projects, and contact information. It is designed to help employers quickly understand his profile, strengths, and readiness for entry-level opportunities.
+
+4. System Scope
+
+The chatbot shall:
+
+answer employer questions naturally,
+understand both keywords and full sentences,
+provide concise and professional replies,
+support follow-up questions,
+summarize Farhan’s profile,
+explain projects, education, academics, contact, and portfolio purpose.
+
+The chatbot shall not:
+
+give unrelated answers,
+require exact trigger words only,
+repeatedly reject valid queries,
+break conversation continuity.
+5. Functional Requirements
+5.1 Intent Recognition
+
+The chatbot must identify user intent from both exact keywords and natural language sentences.
+
+Supported intent categories:
+Skills
+Projects
+Education
+Academics
+Experience
+Contact Information
+Portfolio Overview
+Fresher Employability Summary
+General Profile Summary
+5.2 Synonym and Phrase Mapping
+
+The chatbot shall recognize alternative terms and map them correctly.
+
+Examples:
+academics → education
+studies → education
+fresher quality → employability summary
+portfolio → website overview
+tell me everything → full profile summary
+background → profile summary
+qualifications → education + skills
+what can he do → skills / projects
+5.3 Natural Language Query Handling
+
+The chatbot must answer questions phrased in natural English, including:
+
+“How suitable is he as a fresher?”
+“Can you summarize his background?”
+“What kind of projects has he done?”
+“Tell me about his academics.”
+“What is this portfolio about?”
+5.4 Follow-Up Context Retention
+
+The chatbot shall maintain short-term conversational context for follow-up messages such as:
+
+“describe all of them”
+“skills then”
+“projects”
+“what about education?”
+“and contact?”
+5.5 Smart Clarification
+
+If a question is too vague, the chatbot shall ask a useful clarification instead of rejecting it.
+
+Example:
+
+Instead of:
+
+“Could you ask me something about his skills, projects, education, or experience?”
+
+Use:
+
+“I can help with Farhan’s skills, projects, education, experience, or contact details. Which one would you like to know more about?”
+
+5.6 Employer-Focused Tone
+
+All responses shall be:
+
+professional,
+concise,
+polite,
+portfolio-appropriate,
+suitable for recruiters and employers.
+5.7 Summary Generation
+
+The chatbot shall provide:
+
+brief profile summaries,
+fresher suitability summaries,
+academic summaries,
+overall professional introductions.
+5.8 Contact Response
+
+The chatbot shall provide contact information clearly and professionally when requested.
+
+It should ideally format contact details neatly instead of dumping them as plain text.
+
+6. Non-Functional Requirements
+6.1 Usability
+
+The chatbot should be easy for employers to use without needing special commands.
+
+6.2 Response Quality
+
+Responses should be grammatically correct, relevant, and human-like.
+
+6.3 Reliability
+
+The chatbot should successfully answer at least 90% of common employer questions within its supported knowledge base.
+
+6.4 Performance
+
+Average response time should remain fast enough for real-time interaction.
+
+6.5 Professional Presentation
+
+The chatbot must reflect positively on the portfolio owner’s professionalism.
+
+7. Suggested Conversation Design Improvements
+7.1 Replace Rigid Trigger Logic
+
+Current behavior suggests hardcoded keyword matching.
+This should be replaced with:
+
+intent classification,
+synonym matching,
+fallback semantic matching,
+context-aware follow-up handling.
+7.2 Add Intent Confidence Strategy
+
+If confidence is high, answer directly.
+If confidence is medium, answer with a best-fit interpretation.
+If confidence is low, ask a short clarification.
+
+7.3 Add Employer-Oriented Prebuilt Answer Types
+
+The chatbot should support:
+
+“Why should we consider him?”
+“What are his strengths as a fresher?”
+“What has he built?”
+“What is his academic background?”
+“How can we contact him?”
+7.4 Improve Fallback Message
+Bad fallback:
+
+“I’m here specifically to help…”
+
+Better fallback:
+
+“I can help with Farhan’s skills, projects, education, experience, portfolio overview, or contact details. You can ask naturally, for example: ‘What projects has he done?’ or ‘How suitable is he for an entry-level role?’”
+
+8. Acceptance Criteria
+
+The chatbot will be considered acceptable if it can correctly respond to all of the following:
+
+“Tell me about Farhan’s education.”
+“What are his academics?”
+“How good is he as a fresher?”
+“Describe his profile.”
+“What skills does he have?”
+“Tell me about his projects.”
+“What is this portfolio about?”
+“How can I contact him?”
+“Summarize everything briefly.”
+Follow-up prompts like “skills then,” “projects,” and “what about education?”
+9. Recommended Fixes Summary
+Critical fixes
+Add natural language understanding
+Add synonym mapping
+Add follow-up context handling
+Stop repeating rejection messages
+Add profile summary responses
+Add portfolio overview response
+Add fresher employability summary
+Content fixes
+Use professional recruiter-friendly wording
+Give concise but informative answers
+Structure contact information clearly
+Support broad questions, not just menu terms
+10. Final Recommendation
+
+For a portfolio site viewed by real employers, this chatbot should behave like a professional assistant, not like a keyword filter. It must understand human language naturally, answer broad profile questions, and guide employers smoothly through Farhan’s qualifications.
+
+Right now, the chatbot gives the impression that the system is incomplete. Fixing the issues above will make it more reliable, more professional, and more useful in real hiring contexts.
+
+If you want, I can turn this into a formal PDF-style SRS document or a developer-ready version with functional modules, flow, and test cases.
