@@ -363,7 +363,7 @@ export default function Home() {
 
                   <div className="flex md:flex-col items-center gap-3">
                     <a
-                      href={proj.github}
+                      href={project.github}
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 whitespace-nowrap"
