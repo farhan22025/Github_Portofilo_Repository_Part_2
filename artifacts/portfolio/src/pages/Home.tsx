@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Calendar, Code, Database, Briefcase, Send, Loader2, Sparkles, GraduationCap, FlaskConical, Users, ChevronDown } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Code, Database, Briefcase, Sparkles, GraduationCap, FlaskConical, Users, ChevronDown } from "lucide-react";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 import { SectionHeader } from "@/components/SectionHeader";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -21,15 +17,6 @@ const defaultIcon = L.icon({
   shadowSize: [41, 41],
 });
 L.Marker.prototype.options.icon = defaultIcon;
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Valid email is required"),
-  subject: z.string().min(5, "Subject is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -115,21 +102,6 @@ export default function Home() {
     "Data Science Researcher"
   ];
   const typedTitle = useTypingEffect(titles, 80, 40, 2000);
-  const { toast } = useToast();
-
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema)
-  });
-
-  const onSubmit = async (_data: ContactFormValues) => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast({
-      title: "Message sent successfully!",
-      description: "Thanks for reaching out, I'll get back to you soon.",
-      variant: "default",
-    });
-    reset();
-  };
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -266,18 +238,10 @@ export default function Home() {
                   className="w-full aspect-square object-cover rounded-xl"
                 />
               </div>
-              <div className="grid grid-cols-3 gap-3 mt-4">
-                <div className="neo-card p-3 text-center rounded-xl">
-                  <p className="text-2xl font-display font-bold text-gradient-primary">3.06</p>
-                  <p className="text-xs text-muted-foreground mt-1">CGPA</p>
-                </div>
+              <div className="grid grid-cols-1 gap-3 mt-4">
                 <div className="neo-card p-3 text-center rounded-xl">
                   <p className="text-2xl font-display font-bold text-gradient-primary">4+</p>
                   <p className="text-xs text-muted-foreground mt-1">Projects</p>
-                </div>
-                <div className="neo-card p-3 text-center rounded-xl">
-                  <p className="text-2xl font-display font-bold text-gradient-primary">2+</p>
-                  <p className="text-xs text-muted-foreground mt-1">Clubs</p>
                 </div>
               </div>
             </motion.div>
@@ -539,8 +503,8 @@ export default function Home() {
             <div className="h-[420px] w-full rounded-xl overflow-hidden">
               {isMapMounted && (
                 <MapContainer
-                  center={[23.845, 90.25]}
-                  zoom={10}
+                  center={[23.85, 90.27]}
+                  zoom={11}
                   scrollWheelZoom={false}
                   style={{ height: '100%', width: '100%', borderRadius: '0.75rem' }}
                 >
@@ -548,16 +512,16 @@ export default function Home() {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
-                  <Marker position={[23.7508, 90.3743]}>
+                  <Marker position={[23.7591, 90.3928]}>
                     <Popup>
                       <div className="font-semibold text-sm">Home</div>
-                      <div className="text-xs text-muted-foreground">Tejgaon, Dhaka</div>
+                      <div className="text-xs text-muted-foreground">171/1 Tejkunipara, Tejgaon, Dhaka</div>
                     </Popup>
                   </Marker>
-                  <Marker position={[23.9399, 90.1373]}>
+                  <Marker position={[23.8763, 90.3200]}>
                     <Popup>
                       <div className="font-semibold text-sm">Daffodil International University</div>
-                      <div className="text-xs text-muted-foreground">Ashulia Campus</div>
+                      <div className="text-xs text-muted-foreground">Main Campus</div>
                     </Popup>
                   </Marker>
                 </MapContainer>
@@ -571,123 +535,72 @@ export default function Home() {
 
       {/* ═══════════ CONTACT ═══════════ */}
       <section id="contact" className="py-28 px-4 sm:px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeader title="Get In Touch" subtitle="Have a question or want to work together?" label="Contact" />
+        <div className="max-w-3xl mx-auto">
+          <SectionHeader title="Contact Me" subtitle="Let's connect and collaborate" label="Contact" />
 
-          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          <div className="grid sm:grid-cols-2 gap-4">
+            <a
+              href="mailto:f05076963@gmail.com"
+              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-primary/30 transition-all duration-300"
             >
-              <h3 className="text-2xl font-display font-bold mb-8">Contact Information</h3>
-
-              <div className="space-y-4">
-                {[
-                  { icon: <Mail className="w-5 h-5" />, label: "Email", lines: ["f05076963@gmail.com", "alam22205341122@diu.edu.bd"] },
-                  { icon: <Phone className="w-5 h-5" />, label: "Phone", lines: ["+880 1610 772313"] },
-                  { icon: <MapPin className="w-5 h-5" />, label: "Location", lines: ["171/1, Tejkunipara, Tejgaon", "Dhaka-1215, Bangladesh"] },
-                ].map((info) => (
-                  <div key={info.label} className="neo-card p-4 rounded-xl flex items-start gap-4 group">
-                    <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">{info.label}</h4>
-                      {info.lines.map((line, i) => (
-                        <p key={i} className="text-sm text-muted-foreground">{line}</p>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+              <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Mail className="w-5 h-5" />
               </div>
-
-              <div className="mt-8">
-                <h4 className="font-display font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Connect</h4>
-                <div className="flex gap-3">
-                  <a href="https://github.com/farhan22025" target="_blank" rel="noreferrer" className="w-10 h-10 flex items-center justify-center rounded-xl border border-border text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a href="https://farhan22025.github.io" target="_blank" rel="noreferrer" className="w-10 h-10 flex items-center justify-center rounded-xl border border-border text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="w-10 h-10 flex items-center justify-center rounded-xl border border-border text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </div>
+              <div>
+                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">Email</h4>
+                <p className="text-sm text-muted-foreground">f05076963@gmail.com</p>
+                <p className="text-sm text-muted-foreground">alam22205341122@diu.edu.bd</p>
               </div>
-            </motion.div>
+            </a>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="neo-card p-6 md:p-8 rounded-2xl"
+            <a
+              href="https://api.whatsapp.com/send/?phone=8801610772313&text=Hi+Farhan%2C+I+visited+your+portfolio+and+wanted+to+connect.&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noreferrer"
+              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-green-500/30 transition-all duration-300"
             >
-              <h3 className="text-2xl font-display font-bold mb-6">Send a message</h3>
+              <div className="w-11 h-11 rounded-xl bg-green-500/10 text-green-600 flex items-center justify-center shrink-0 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                <Phone className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">WhatsApp</h4>
+                <p className="text-sm text-muted-foreground">+880 1610 772313</p>
+                <p className="text-xs text-green-600 font-medium mt-1">Tap to chat on WhatsApp</p>
+              </div>
+            </a>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-foreground">Your Name</label>
-                    <input
-                      id="name"
-                      {...register("name")}
-                      className={`w-full bg-muted/50 border ${errors.name ? 'border-destructive focus:ring-destructive/20' : 'border-border focus:border-primary focus:ring-primary/20'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-4 transition-all`}
-                      placeholder="John Doe"
-                    />
-                    {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">Email Address</label>
-                    <input
-                      id="email"
-                      {...register("email")}
-                      className={`w-full bg-muted/50 border ${errors.email ? 'border-destructive focus:ring-destructive/20' : 'border-border focus:border-primary focus:ring-primary/20'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-4 transition-all`}
-                      placeholder="john@example.com"
-                    />
-                    {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
-                  </div>
-                </div>
+            <a
+              href="https://www.google.com/maps/place/Q97R%2BGMR+Dhaka"
+              target="_blank"
+              rel="noreferrer"
+              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-secondary/30 transition-all duration-300"
+            >
+              <div className="w-11 h-11 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">Location</h4>
+                <p className="text-sm text-muted-foreground">171/1, Tejkunipara, Tejgaon</p>
+                <p className="text-sm text-muted-foreground">Dhaka-1215, Bangladesh</p>
+                <p className="text-xs text-secondary font-medium mt-1">View on Google Maps</p>
+              </div>
+            </a>
 
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium text-foreground">Subject</label>
-                  <input
-                    id="subject"
-                    {...register("subject")}
-                    className={`w-full bg-muted/50 border ${errors.subject ? 'border-destructive focus:ring-destructive/20' : 'border-border focus:border-primary focus:ring-primary/20'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-4 transition-all`}
-                    placeholder="Project Inquiry"
-                  />
-                  {errors.subject && <p className="text-xs text-destructive">{errors.subject.message}</p>}
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
-                  <textarea
-                    id="message"
-                    {...register("message")}
-                    rows={5}
-                    className={`w-full bg-muted/50 border ${errors.message ? 'border-destructive focus:ring-destructive/20' : 'border-border focus:border-primary focus:ring-primary/20'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-4 transition-all resize-none`}
-                    placeholder="Hello Farhan, I'd like to discuss..."
-                  />
-                  {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground font-semibold py-3.5 rounded-xl hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2"
-                >
-                  {isSubmitting ? (
-                    <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</>
-                  ) : (
-                    <><Send className="w-5 h-5" /> Send Message</>
-                  )}
-                </button>
-              </form>
-            </motion.div>
+            <a
+              href="https://github.com/farhan22025"
+              target="_blank"
+              rel="noreferrer"
+              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-primary/30 transition-all duration-300"
+            >
+              <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <Github className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">GitHub</h4>
+                <p className="text-sm text-muted-foreground">farhan22025</p>
+                <p className="text-xs text-primary font-medium mt-1">View profile</p>
+              </div>
+            </a>
           </div>
         </div>
       </section>
