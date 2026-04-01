@@ -19,16 +19,37 @@ const defaultIcon = L.icon({
 L.Marker.prototype.options.icon = defaultIcon;
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
+    filter: "blur(0px)",
+    transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] },
   }),
 };
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 const stagger = {
-  visible: { transition: { staggerChildren: 0.08 } },
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardReveal = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  }),
 };
 
 const skillsData = [
@@ -117,6 +138,7 @@ export default function Home() {
 
   return (
     <div className="mesh-bg min-h-screen relative overflow-hidden">
+      <div className="wave-bg" />
       <div className="orb orb-1" />
       <div className="orb orb-2" />
       <div className="orb orb-3" />
@@ -190,18 +212,18 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="order-1 lg:order-2 flex justify-center"
             >
-              <div className="relative">
-                <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/20 to-primary/10 blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="relative w-64 h-72 sm:w-72 sm:h-80 lg:w-80 lg:h-[22rem] rounded-3xl overflow-hidden border-2 border-primary/20 rotate-3 hover:rotate-0 transition-transform duration-700 bg-gradient-to-br from-primary/10 via-secondary/5 to-background">
+              <div className="relative float-gentle">
+                <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/15 via-secondary/10 to-primary/5 blur-3xl" style={{ animation: 'float-gentle 8s ease-in-out infinite reverse' }} />
+                <div className="relative w-64 h-72 sm:w-72 sm:h-80 lg:w-80 lg:h-[22rem] rounded-3xl overflow-hidden border-2 border-primary/15 rotate-3 hover:rotate-0 transition-all duration-1000 ease-out bg-gradient-to-br from-primary/10 via-secondary/5 to-background shadow-xl shadow-primary/5 hover:shadow-2xl hover:shadow-primary/10">
                   <img
                     src={`${BASE_URL}/farhan-profile.png`}
                     alt="Farhan Alam"
                     className="w-full h-full object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
                 </div>
               </div>
             </motion.div>
@@ -230,10 +252,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-[280px_1fr] gap-12 items-start">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="neo-card p-3 rounded-2xl">
                 <img
@@ -243,7 +265,7 @@ export default function Home() {
                 />
               </div>
               <div className="grid grid-cols-1 gap-3 mt-4">
-                <div className="neo-card p-3 text-center rounded-xl">
+                <div className="neo-card p-3 text-center rounded-xl shimmer-line">
                   <p className="text-2xl font-display font-bold text-gradient-primary">4+</p>
                   <p className="text-xs text-muted-foreground mt-1">Projects</p>
                 </div>
@@ -251,10 +273,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <h3 className="text-3xl font-display font-bold mb-6 tracking-tight">
                 Aspiring <span className="text-gradient-primary">Data Engineer</span> based in Dhaka
@@ -294,10 +316,11 @@ export default function Home() {
             {skillsData.map((category, idx) => (
               <motion.div
                 key={category.category}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                variants={cardReveal}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
                 className="neo-card p-6 md:p-8 rounded-2xl group"
               >
                 <div className="flex items-center gap-3 mb-6">
@@ -329,10 +352,11 @@ export default function Home() {
             {projects.map((project, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                variants={cardReveal}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
                 className="neo-card rounded-2xl overflow-hidden group"
               >
                 <div className="grid md:grid-cols-[auto_1fr_auto] items-center gap-6 md:gap-8 p-6 md:p-8">
@@ -409,10 +433,10 @@ export default function Home() {
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    initial={{ opacity: 0, x: -30, filter: "blur(4px)" }}
+                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ delay: idx * 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                     className="neo-card p-5 rounded-xl flex gap-4"
                   >
                     <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
@@ -459,10 +483,10 @@ export default function Home() {
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    initial={{ opacity: 0, x: 30, filter: "blur(4px)" }}
+                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ delay: idx * 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                     className="neo-card p-5 rounded-xl"
                   >
                     <div className="flex items-start gap-4">
@@ -498,10 +522,10 @@ export default function Home() {
           <SectionHeader title="My Locations" subtitle="Where I live and study" label="Map" />
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="neo-card p-3 rounded-2xl"
           >
             <div className="h-[420px] w-full rounded-xl overflow-hidden">
@@ -543,68 +567,76 @@ export default function Home() {
           <SectionHeader title="Contact Me" subtitle="Let's connect and collaborate" label="Contact" />
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <a
-              href="mailto:f05076963@gmail.com"
-              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-primary/30 transition-all duration-300"
-            >
-              <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">Email</h4>
-                <p className="text-sm text-muted-foreground">f05076963@gmail.com</p>
-                <p className="text-sm text-muted-foreground">alam22205341122@diu.edu.bd</p>
-              </div>
-            </a>
-
-            <a
-              href="https://api.whatsapp.com/send/?phone=8801610772313&text=Hi+Farhan%2C+I+visited+your+portfolio+and+wanted+to+connect.&type=phone_number&app_absent=0"
-              target="_blank"
-              rel="noreferrer"
-              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-green-500/30 transition-all duration-300"
-            >
-              <div className="w-11 h-11 rounded-xl bg-green-500/10 text-green-600 flex items-center justify-center shrink-0 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">WhatsApp</h4>
-                <p className="text-sm text-muted-foreground">+880 1610 772313</p>
-                <p className="text-xs text-green-600 font-medium mt-1">Tap to chat on WhatsApp</p>
-              </div>
-            </a>
-
-            <a
-              href="https://www.google.com/maps/place/Q97R%2BGMR+Dhaka"
-              target="_blank"
-              rel="noreferrer"
-              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-secondary/30 transition-all duration-300"
-            >
-              <div className="w-11 h-11 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-secondary-foreground transition-all duration-300">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">Location</h4>
-                <p className="text-sm text-muted-foreground">171/1, Tejkunipara, Tejgaon</p>
-                <p className="text-sm text-muted-foreground">Dhaka-1215, Bangladesh</p>
-                <p className="text-xs text-secondary font-medium mt-1">View on Google Maps</p>
-              </div>
-            </a>
-
-            <a
-              href="https://github.com/farhan22025"
-              target="_blank"
-              rel="noreferrer"
-              className="neo-card p-5 rounded-xl flex items-start gap-4 group hover:border-primary/30 transition-all duration-300"
-            >
-              <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                <Github className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">GitHub</h4>
-                <p className="text-sm text-muted-foreground">farhan22025</p>
-                <p className="text-xs text-primary font-medium mt-1">View profile</p>
-              </div>
-            </a>
+            {[
+              {
+                href: "mailto:f05076963@gmail.com",
+                target: undefined as string | undefined,
+                hoverBorder: "hover:border-primary/30",
+                iconBg: "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground",
+                icon: <Mail className="w-5 h-5" />,
+                title: "Email",
+                lines: ["f05076963@gmail.com", "alam22205341122@diu.edu.bd"],
+                cta: undefined as string | undefined,
+                ctaColor: "",
+              },
+              {
+                href: "https://api.whatsapp.com/send/?phone=8801610772313&text=Hi+Farhan%2C+I+visited+your+portfolio+and+wanted+to+connect.&type=phone_number&app_absent=0",
+                target: "_blank",
+                hoverBorder: "hover:border-green-500/30",
+                iconBg: "bg-green-500/10 text-green-600 group-hover:bg-green-500 group-hover:text-white",
+                icon: <Phone className="w-5 h-5" />,
+                title: "WhatsApp",
+                lines: ["+880 1610 772313"],
+                cta: "Tap to chat on WhatsApp",
+                ctaColor: "text-green-600",
+              },
+              {
+                href: "https://www.google.com/maps/place/Q97R%2BGMR+Dhaka",
+                target: "_blank",
+                hoverBorder: "hover:border-secondary/30",
+                iconBg: "bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground",
+                icon: <MapPin className="w-5 h-5" />,
+                title: "Location",
+                lines: ["171/1, Tejkunipara, Tejgaon", "Dhaka-1215, Bangladesh"],
+                cta: "View on Google Maps",
+                ctaColor: "text-secondary",
+              },
+              {
+                href: "https://github.com/farhan22025",
+                target: "_blank",
+                hoverBorder: "hover:border-primary/30",
+                iconBg: "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground",
+                icon: <Github className="w-5 h-5" />,
+                title: "GitHub",
+                lines: ["farhan22025"],
+                cta: "View profile",
+                ctaColor: "text-primary",
+              },
+            ].map((card, idx) => (
+              <motion.a
+                key={idx}
+                href={card.href}
+                target={card.target}
+                rel={card.target ? "noreferrer" : undefined}
+                variants={cardReveal}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-30px" }}
+                className={`neo-card p-5 rounded-xl flex items-start gap-4 group ${card.hoverBorder} transition-all duration-500`}
+              >
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 ${card.iconBg}`}>
+                  {card.icon}
+                </div>
+                <div>
+                  <h4 className="font-display font-semibold text-foreground text-sm mb-0.5">{card.title}</h4>
+                  {card.lines.map((line, i) => (
+                    <p key={i} className="text-sm text-muted-foreground">{line}</p>
+                  ))}
+                  {card.cta && <p className={`text-xs font-medium mt-1 ${card.ctaColor}`}>{card.cta}</p>}
+                </div>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>

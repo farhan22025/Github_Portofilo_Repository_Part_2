@@ -94,7 +94,7 @@ export function Navbar() {
                     <motion.div
                       layoutId="pill"
                       className="absolute inset-0 bg-primary rounded-full"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 28, mass: 0.8 }}
                     />
                   )}
                   <span className="relative z-10">{link.name}</span>
