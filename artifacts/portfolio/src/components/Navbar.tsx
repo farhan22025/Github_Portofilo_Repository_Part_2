@@ -23,6 +23,13 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
+      const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50);
+      if (atBottom) {
+        const lastLink = navLinks[navLinks.length - 1];
+        setActiveSection(lastLink.href.substring(1));
+        return;
+      }
+
       const sections = navLinks.map(link => link.href.substring(1));
       let current = "home";
 
