@@ -66,6 +66,7 @@ const projects = [
     desc: "Developing a lightweight offline machine learning model for detecting manipulated images in low-resource environments. Applies image processing and classification techniques for efficient detection.",
     tags: ["ML", "Python", "Image Processing", "AI Security"],
     accent: "from-blue-600 to-indigo-600",
+    github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Final-Year-Project/Deepfake-Detection",
   },
   {
     title: "Smart Waste Management System",
@@ -74,6 +75,7 @@ const projects = [
     desc: "Designed relational database schema and data flow diagrams. Prepared software requirements documents to support scalable system architecture.",
     tags: ["System Design", "SRS", "UML", "ERD", "Database"],
     accent: "from-orange-500 to-amber-500",
+    github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Course-Projects/Smart-Waste-Management-System",
   },
   {
     title: "Coffee Shop Management System",
@@ -82,6 +84,7 @@ const projects = [
     desc: "Developed a point-of-sale workflow for capturing orders, daily sales, inventory movement, and revenue records using Java OOP principles.",
     tags: ["Java", "OOP", "POS System"],
     accent: "from-blue-500 to-indigo-500",
+    github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Course-Projects/Coffee-Shop-Management-System",
   },
   {
     title: "Banking Management System",
@@ -90,6 +93,7 @@ const projects = [
     desc: "Built a file-based data persistence system for storing and retrieving client financial records with input validation.",
     tags: ["C Programming", "File Handling", "Data Persistence"],
     accent: "from-teal-500 to-emerald-500",
+    github: "https://github.com/farhan22025/farhan22025.github.io/tree/main/Portfolio-Projects/Projects/Academic/Course-Projects/Banking-Management-System",
   }
 ];
 
@@ -359,7 +363,7 @@ export default function Home() {
 
                   <div className="flex md:flex-col items-center gap-3">
                     <a
-                      href="https://github.com/farhan22025"
+                      href={proj.github}
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full border border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 whitespace-nowrap"
