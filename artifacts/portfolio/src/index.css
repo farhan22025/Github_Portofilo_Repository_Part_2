@@ -4,10 +4,10 @@
 @plugin "@tailwindcss/typography";
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
-* {
+section[id] {
   scroll-margin-top: 80px;
 }
 

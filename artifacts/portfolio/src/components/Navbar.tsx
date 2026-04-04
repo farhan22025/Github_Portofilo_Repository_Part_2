@@ -51,12 +51,15 @@ export function Navbar() {
 
   const scrollTo = (href: string) => {
     setIsMobileOpen(false);
-    const element = document.querySelector(href);
+    const id = href.replace('#', '');
+    const element = document.getElementById(id);
     if (element) {
+      const offsetTop = element.offsetTop - 80;
       window.scrollTo({
-        top: element.getBoundingClientRect().top + window.scrollY - 80,
+        top: Math.max(0, offsetTop),
         behavior: "smooth"
       });
+      setActiveSection(id);
     }
   };
 

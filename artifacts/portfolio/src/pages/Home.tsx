@@ -130,7 +130,13 @@ export default function Home() {
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) {
+      const offsetTop = el.offsetTop - 80;
+      window.scrollTo({
+        top: Math.max(0, offsetTop),
+        behavior: "smooth"
+      });
+    }
   };
 
   const [isMapMounted, setIsMapMounted] = useState(false);
