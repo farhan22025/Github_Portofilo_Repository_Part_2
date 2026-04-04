@@ -50,10 +50,21 @@ export function Navbar() {
   }, []);
 
   const scrollTo = (href: string) => {
-    setIsMobileOpen(false);
     const id = href.replace('#', '');
     const element = document.getElementById(id);
-    if (element) {
+    if (!element) return;
+
+    if (isMobileOpen) {
+      setIsMobileOpen(false);
+      setTimeout(() => {
+        const offsetTop = element.offsetTop - 80;
+        window.scrollTo({
+          top: Math.max(0, offsetTop),
+          behavior: "smooth"
+        });
+        setActiveSection(id);
+      }, 350);
+    } else {
       const offsetTop = element.offsetTop - 80;
       window.scrollTo({
         top: Math.max(0, offsetTop),
