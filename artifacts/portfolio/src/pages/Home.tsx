@@ -131,11 +131,8 @@ export default function Home() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      const offsetTop = el.offsetTop - 80;
-      window.scrollTo({
-        top: Math.max(0, offsetTop),
-        behavior: "smooth"
-      });
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     }
   };
 

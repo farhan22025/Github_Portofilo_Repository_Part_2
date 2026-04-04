@@ -49,28 +49,23 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
-    const id = href.replace('#', '');
+  const scrollToElement = (id: string) => {
     const element = document.getElementById(id);
     if (!element) return;
+    const top = element.getBoundingClientRect().top + window.pageYOffset - 80;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    setActiveSection(id);
+  };
 
+  const scrollTo = (href: string) => {
+    const id = href.replace('#', '');
     if (isMobileOpen) {
       setIsMobileOpen(false);
-      setTimeout(() => {
-        const offsetTop = element.offsetTop - 80;
-        window.scrollTo({
-          top: Math.max(0, offsetTop),
-          behavior: "smooth"
-        });
-        setActiveSection(id);
-      }, 350);
-    } else {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: Math.max(0, offsetTop),
-        behavior: "smooth"
+      requestAnimationFrame(() => {
+        setTimeout(() => scrollToElement(id), 400);
       });
-      setActiveSection(id);
+    } else {
+      scrollToElement(id);
     }
   };
 
